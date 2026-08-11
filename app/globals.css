@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — exact values from Nineteenandfree-Design-UI-Flow.md Section 2 & 3.
+  Do not approximate these hex codes or shape/depth values.
+*/
+:root {
+  --color-cream: #fbf3e9;
+  --color-charcoal: #3f3a34;
+
+  --color-soft-roses: #fac1b5;
+  --color-eucalyptus: #98b8b9;
+  --color-tulip-stems: #c6c870;
+  --color-lavender: #c59fbe;
+  --color-pink-tulips: #f283ae;
+
+  /* Soft rounded corners: not sharp, not fully pill-shaped (Design doc Section 3). */
+  --radius-card: 1.25rem;
+  --radius-button: 0.9rem;
+
+  /* Soft, subtle shadow: a gentle lift, not flat and not heavy (Design doc Section 3). */
+  --shadow-soft: 0 6px 20px -6px rgba(63, 58, 52, 0.18), 0 2px 8px -2px rgba(63, 58, 52, 0.08);
+
+  /* Default page accent fallback; every themed page overrides this via data-accent. */
+  --accent: var(--color-eucalyptus);
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-charcoal: var(--color-charcoal);
+  --color-soft-roses: var(--color-soft-roses);
+  --color-eucalyptus: var(--color-eucalyptus);
+  --color-tulip-stems: var(--color-tulip-stems);
+  --color-lavender: var(--color-lavender);
+  --color-pink-tulips: var(--color-pink-tulips);
+
+  --font-sans: var(--font-shantell-sans);
+  --font-script: var(--font-caveat);
+}
+
+/* Per-page theme accent, set on a wrapper via data-accent (see lib/theme.ts). */
+[data-accent="soft-roses"] {
+  --accent: var(--color-soft-roses);
+}
+[data-accent="eucalyptus"] {
+  --accent: var(--color-eucalyptus);
+}
+[data-accent="tulip-stems"] {
+  --accent: var(--color-tulip-stems);
+}
+[data-accent="lavender"] {
+  --accent: var(--color-lavender);
+}
+[data-accent="pink-tulips"] {
+  --accent: var(--color-pink-tulips);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans), sans-serif;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+/* Shared card/button shape tokens (TRD Section 6 — defined once, not per-component). */
+.card-shape {
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.button-shape {
+  border-radius: var(--radius-button);
+}
