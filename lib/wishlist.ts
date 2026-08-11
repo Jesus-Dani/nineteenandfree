@@ -16,7 +16,7 @@ export type WishlistItemProgress = {
 
 // Canonical display order per PRD Section 5.1. Any further admin-added
 // categories are appended after these, in the order they're encountered.
-const CATEGORY_ORDER = [
+export const CATEGORY_ORDER = [
   "Bibles",
   "Children's Books",
   "Teen/Young Adult Books",
@@ -93,6 +93,66 @@ export async function getWishlistCatalogue(): Promise<Map<string, WishlistItemPr
   }
 
   return ordered;
+}
+
+export type AdminWishlistItem = WishlistItemProgress & { status: "active" | "archived" };
+
+/** All items (active + archived), with live progress — for the admin dashboard. */
+export async function getAllWishlistItemsForAdmin(): Promise<AdminWishlistItem[]> {
+  const supabase = createServerSupabaseClient();
+
+  const [{ data: items, error: itemsError }, { data: paidContributions, error: contribError }] =
+    await Promise.all([
+      supabase
+        .from("wishlist_items")
+        .select("id, category, name, description, unit_cost, status")
+        .order("created_at", { ascending: true }),
+      supabase
+        .from("contributions")
+        .select("target_item_id, amount")
+        .eq("target_type", "item")
+        .eq("payment_status", "paid"),
+    ]);
+
+  if (itemsError) throw itemsError;
+  if (contribError) throw contribError;
+
+  const totalsByItem = new Map<string, number>();
+  for (const row of paidContributions ?? []) {
+    if (!row.target_item_id) continue;
+    totalsByItem.set(row.target_item_id, (totalsByItem.get(row.target_item_id) ?? 0) + Number(row.amount));
+  }
+
+  return (items ?? []).map((item) => ({
+    ...computeProgress(item, totalsByItem.get(item.id) ?? 0),
+    status: item.status as "active" | "archived",
+  }));
+}
+
+/** Admin-only single-item lookup that ignores status (so archived items can still be edited). */
+export async function getAnyWishlistItemById(id: string): Promise<AdminWishlistItem | null> {
+  const supabase = createServerSupabaseClient();
+
+  const { data: item, error: itemError } = await supabase
+    .from("wishlist_items")
+    .select("id, category, name, description, unit_cost, status")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (itemError) throw itemError;
+  if (!item) return null;
+
+  const { data: paidContributions, error: contribError } = await supabase
+    .from("contributions")
+    .select("amount")
+    .eq("target_type", "item")
+    .eq("target_item_id", id)
+    .eq("payment_status", "paid");
+
+  if (contribError) throw contribError;
+
+  const totalRaised = (paidContributions ?? []).reduce((sum, row) => sum + Number(row.amount), 0);
+  return { ...computeProgress(item, totalRaised), status: item.status as "active" | "archived" };
 }
 
 export async function getWishlistItemById(id: string): Promise<WishlistItemProgress | null> {

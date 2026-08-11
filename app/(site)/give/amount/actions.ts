@@ -6,6 +6,7 @@ import { randomUUID } from "crypto";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { initializeTransaction } from "@/lib/paystack";
 import { getWishlistItemById } from "@/lib/wishlist";
+import { getGiveFlowEnabled } from "@/lib/site-settings";
 
 export type GivingActionState = { error?: string };
 
@@ -28,6 +29,9 @@ export async function initializeGiving(
   }
   if (!itemId && fund !== "general") {
     return { error: "Missing target for this contribution. Please start again from the Give page." };
+  }
+  if (!(await getGiveFlowEnabled())) {
+    return { error: "Giving is currently closed. Thank you for your interest in supporting the outreach." };
   }
 
   let authorizationUrl: string;
@@ -53,6 +57,7 @@ export async function initializeGiving(
       target_item_id: targetItemId,
       payment_status: "pending",
       payment_reference: reference,
+      contributor_contact: email,
     });
 
     if (insertError) throw insertError;

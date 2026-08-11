@@ -5,12 +5,32 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { PAGE_ACCENTS } from "@/lib/theme";
 import { formatNaira } from "@/lib/format";
 import { getWishlistCatalogue } from "@/lib/wishlist";
+import { getGiveFlowEnabled } from "@/lib/site-settings";
 
 export const revalidate = 45;
 
 export default async function GivePage() {
-  const catalogue = await getWishlistCatalogue();
+  const [catalogue, giveFlowEnabled] = await Promise.all([
+    getWishlistCatalogue(),
+    getGiveFlowEnabled(),
+  ]);
   const allItems = [...catalogue.values()].flat();
+
+  if (!giveFlowEnabled) {
+    return (
+      <div data-accent={PAGE_ACCENTS.give} className="mx-auto w-full max-w-2xl px-6 py-16 text-center">
+        <ScrollReveal>
+          <h1 className="mb-4 text-4xl">Giving has closed</h1>
+          <Card variant="outline">
+            <p className="text-sm text-charcoal/70">
+              Thank you to everyone who gave — the outreach&apos;s Give flow is no longer accepting
+              new gifts. Visit Impact and Transparency to see what your generosity made possible.
+            </p>
+          </Card>
+        </ScrollReveal>
+      </div>
+    );
+  }
 
   return (
     <div data-accent={PAGE_ACCENTS.give} className="mx-auto w-full max-w-2xl px-6 py-16">

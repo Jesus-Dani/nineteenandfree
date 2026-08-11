@@ -5,11 +5,27 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { PAGE_ACCENTS } from "@/lib/theme";
 import { formatNaira } from "@/lib/format";
 import { getWishlistItemById } from "@/lib/wishlist";
+import { getGiveFlowEnabled } from "@/lib/site-settings";
 
 type SearchParams = Promise<{ item?: string; fund?: string; mode?: string }>;
 
 export default async function GiveAmountPage({ searchParams }: { searchParams: SearchParams }) {
   const { item: itemId, fund, mode } = await searchParams;
+
+  if (!(await getGiveFlowEnabled())) {
+    return (
+      <div data-accent={PAGE_ACCENTS.give} className="mx-auto w-full max-w-lg px-6 py-16 text-center">
+        <Card variant="outline">
+          <p className="text-sm text-charcoal/70">
+            Giving has closed. Thank you to everyone who supported this outreach.
+          </p>
+          <Link href="/" className="mt-4 inline-block underline">
+            Back to Home
+          </Link>
+        </Card>
+      </div>
+    );
+  }
 
   if (!itemId && fund !== "general") {
     return (
