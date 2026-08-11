@@ -1,8 +1,14 @@
 import { Card } from "@/components/Card";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { PAGE_ACCENTS } from "@/lib/theme";
+import { formatNaira } from "@/lib/format";
+import { getTransparencyTotals } from "@/lib/transparency-totals";
 
-export default function TransparencyPage() {
+export const revalidate = 45;
+
+export default async function TransparencyPage() {
+  const totals = await getTransparencyTotals();
+
   return (
     <div data-accent={PAGE_ACCENTS.transparency} className="mx-auto w-full max-w-3xl px-6 py-16">
       <ScrollReveal>
@@ -10,6 +16,23 @@ export default function TransparencyPage() {
         <p className="mb-8 text-charcoal/90">
           We believe in being open, honest, and faithful stewards of every gift.
         </p>
+      </ScrollReveal>
+
+      <ScrollReveal delay={0.05}>
+        <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <Card variant="fill" className="text-center">
+            <p className="text-2xl">{formatNaira(totals.overallTotal)}</p>
+            <p className="text-xs">Total raised</p>
+          </Card>
+          <Card variant="outline" className="text-center">
+            <p className="text-2xl">{formatNaira(totals.designatedTotal)}</p>
+            <p className="text-xs text-charcoal/70">Designated giving</p>
+          </Card>
+          <Card variant="outline" className="text-center">
+            <p className="text-2xl">{formatNaira(totals.generalTotal)}</p>
+            <p className="text-xs text-charcoal/70">General Outreach Fund</p>
+          </Card>
+        </div>
       </ScrollReveal>
 
       <ScrollReveal delay={0.1}>
