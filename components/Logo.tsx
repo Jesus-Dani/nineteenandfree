@@ -8,7 +8,7 @@ export function Logo() {
   return (
     <Link
       href="/"
-      className="flex items-center gap-1.5 text-xl leading-none text-charcoal"
+      className="flex shrink-0 items-center gap-1.5 text-base leading-none text-charcoal sm:text-xl"
       aria-label="Nineteenandfree — home"
     >
       <span className="whitespace-nowrap">nineteen and free</span>

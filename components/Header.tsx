@@ -6,7 +6,7 @@ import { NAV_LINKS } from "@/lib/nav-links";
 
 export function Header() {
   return (
-    <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
+    <header className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6 sm:py-6">
       <Logo />
       <nav className="hidden items-center gap-8 md:flex">
         {NAV_LINKS.map((link) => (

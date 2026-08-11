@@ -36,7 +36,7 @@ export default async function AdminDashboardPage() {
         </Link>
       </div>
 
-      <div className="card-shape flex items-center justify-between border-2 border-charcoal/20 bg-white p-6">
+      <div className="card-shape flex flex-wrap items-center justify-between gap-3 border-2 border-charcoal/20 bg-white p-6">
         <div>
           <p className="font-medium">Give flow</p>
           <p className="text-sm text-charcoal/70">

@@ -32,7 +32,7 @@ export function MobileNav() {
             className="absolute inset-0 bg-charcoal/30"
             onClick={() => setOpen(false)}
           />
-          <nav className="card-shape absolute top-0 right-0 flex h-full w-72 max-w-[80vw] flex-col gap-6 bg-cream p-6 shadow-[var(--shadow-soft)]">
+          <nav className="absolute top-0 right-0 flex h-full w-72 max-w-[80vw] flex-col gap-6 rounded-l-[var(--radius-card)] bg-cream p-6 shadow-[var(--shadow-soft)]">
             <div className="flex items-center justify-between">
               <Logo />
               <button

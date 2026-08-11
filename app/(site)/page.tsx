@@ -1,5 +1,6 @@
 import { CtaButton } from "@/components/CtaButton";
 import { Card } from "@/components/Card";
+import { PhotoFrame } from "@/components/PhotoFrame";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { PAGE_ACCENTS } from "@/lib/theme";
 
@@ -52,13 +53,15 @@ export default function HomePage() {
         </div>
         <div className="flex flex-1 justify-center">
           <ScrollReveal delay={0.15}>
-            <div className="relative">
-              <div
-                className="card-shape flex aspect-[4/5] w-64 items-center justify-center border-[3.5px] bg-white/40 p-6 text-center text-sm text-charcoal/60 md:w-80"
-                style={{ borderColor: "var(--accent)" }}
-              >
-                Daniella&apos;s photo goes here
-              </div>
+            <div className="relative w-64 md:w-80">
+              <PhotoFrame
+                src="/images/daniella-hero.jpeg"
+                alt="Daniella"
+                width={480}
+                height={600}
+                priority
+                className="aspect-[4/5] w-full"
+              />
               <span className="font-script text-pink-tulips absolute -bottom-4 -right-2 text-6xl">19</span>
             </div>
           </ScrollReveal>

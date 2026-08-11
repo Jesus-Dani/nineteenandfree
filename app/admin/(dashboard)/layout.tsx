@@ -11,9 +11,9 @@ import { AdminLogoutButton } from "@/components/AdminLogoutButton";
 export default function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-cream text-charcoal">
-      <header className="border-b border-charcoal/15 px-6 py-4">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <nav className="flex items-center gap-6 text-sm">
+      <header className="border-b border-charcoal/15 px-4 py-3 sm:px-6 sm:py-4">
+        <div className="mx-auto flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <nav className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
             <span className="font-medium">Nineteenandfree Admin</span>
             <Link href="/admin" className="underline-offset-2 hover:underline">
               Dashboard

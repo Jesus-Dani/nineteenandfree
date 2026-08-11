@@ -41,7 +41,7 @@ export default async function AdminWishlistPage({ searchParams }: { searchParams
                   className="h-16 w-16 shrink-0 rounded-lg object-cover"
                 />
               )}
-              <div className="flex-1">
+              <div className="min-w-0 flex-1">
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <span className="text-lg">{item.name}</span>{" "}
