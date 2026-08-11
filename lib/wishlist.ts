@@ -5,6 +5,7 @@ export type WishlistItemProgress = {
   category: string;
   name: string;
   description: string | null;
+  imageUrl: string | null;
   unitCost: number;
   totalRaised: number;
   unitsFunded: number;
@@ -24,8 +25,17 @@ export const CATEGORY_ORDER = [
   "Overall Outreach",
 ];
 
+const ITEM_COLUMNS = "id, category, name, description, image_url, unit_cost";
+
 function computeProgress(
-  item: { id: string; category: string; name: string; description: string | null; unit_cost: number },
+  item: {
+    id: string;
+    category: string;
+    name: string;
+    description: string | null;
+    image_url: string | null;
+    unit_cost: number;
+  },
   totalRaised: number
 ): WishlistItemProgress {
   const unitCost = Number(item.unit_cost);
@@ -37,6 +47,7 @@ function computeProgress(
     category: item.category,
     name: item.name,
     description: item.description,
+    imageUrl: item.image_url,
     unitCost,
     totalRaised,
     unitsFunded,
@@ -51,11 +62,7 @@ export async function getWishlistCatalogue(): Promise<Map<string, WishlistItemPr
 
   const [{ data: items, error: itemsError }, { data: paidContributions, error: contribError }] =
     await Promise.all([
-      supabase
-        .from("wishlist_items")
-        .select("id, category, name, description, unit_cost")
-        .eq("status", "active")
-        .order("created_at", { ascending: true }),
+      supabase.from("wishlist_items").select(ITEM_COLUMNS).eq("status", "active").order("created_at", { ascending: true }),
       supabase
         .from("contributions")
         .select("target_item_id, amount")
@@ -105,7 +112,7 @@ export async function getAllWishlistItemsForAdmin(): Promise<AdminWishlistItem[]
     await Promise.all([
       supabase
         .from("wishlist_items")
-        .select("id, category, name, description, unit_cost, status")
+        .select(`${ITEM_COLUMNS}, status`)
         .order("created_at", { ascending: true }),
       supabase
         .from("contributions")
@@ -135,7 +142,7 @@ export async function getAnyWishlistItemById(id: string): Promise<AdminWishlistI
 
   const { data: item, error: itemError } = await supabase
     .from("wishlist_items")
-    .select("id, category, name, description, unit_cost, status")
+    .select(`${ITEM_COLUMNS}, status`)
     .eq("id", id)
     .maybeSingle();
 
@@ -160,7 +167,7 @@ export async function getWishlistItemById(id: string): Promise<WishlistItemProgr
 
   const { data: item, error: itemError } = await supabase
     .from("wishlist_items")
-    .select("id, category, name, description, unit_cost")
+    .select(ITEM_COLUMNS)
     .eq("id", id)
     .eq("status", "active")
     .maybeSingle();

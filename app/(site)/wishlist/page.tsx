@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Card } from "@/components/Card";
 import { CtaButton } from "@/components/CtaButton";
+import { PhotoFrame } from "@/components/PhotoFrame";
 import { ProgressBar } from "@/components/ProgressBar";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { PAGE_ACCENTS } from "@/lib/theme";
@@ -51,6 +52,15 @@ export default async function WishlistPage() {
                   <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                     {items.map((item) => (
                       <Card key={item.id} variant="outline" className="flex flex-col gap-4">
+                        {item.imageUrl && (
+                          <PhotoFrame
+                            src={item.imageUrl}
+                            alt={item.name}
+                            width={480}
+                            height={320}
+                            className="aspect-[3/2]"
+                          />
+                        )}
                         <div>
                           <h3 className="text-lg">{item.name}</h3>
                           {item.description && (

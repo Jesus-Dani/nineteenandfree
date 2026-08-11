@@ -17,6 +17,7 @@ type ExistingItem = {
   name: string;
   description: string | null;
   unitCost: number;
+  imageUrl: string | null;
 };
 
 export function WishlistItemForm({
@@ -73,6 +74,18 @@ export function WishlistItemForm({
           required
           className={fieldClass}
         />
+      </label>
+
+      <label className="flex flex-col gap-1 text-sm">
+        Photo <span className="text-charcoal/50">(optional, JPG/PNG under 5MB)</span>
+        {item?.imageUrl && (
+          <div className="mb-1 flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element -- admin preview thumbnail, not the public-facing PhotoFrame */}
+            <img src={item.imageUrl} alt="" className="h-16 w-16 rounded-lg object-cover" />
+            <span className="text-xs text-charcoal/50">Current photo — choose a file to replace it</span>
+          </div>
+        )}
+        <input type="file" name="image" accept="image/*" className={fieldClass} />
       </label>
 
       {state.error && <p className="text-sm text-red-700">{state.error}</p>}

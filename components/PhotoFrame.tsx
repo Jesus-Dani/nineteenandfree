@@ -12,7 +12,7 @@ export function PhotoFrame({
 }: ComponentProps<typeof Image> & { className?: string }) {
   return (
     <div
-      className="card-shape overflow-hidden border-[3.5px]"
+      className="card-shape relative h-full w-full overflow-hidden border-[3.5px]"
       style={{ borderColor: "var(--accent)" }}
     >
       {/* eslint-disable-next-line jsx-a11y/alt-text -- alt is required by ComponentProps<typeof Image> and passed through props */}

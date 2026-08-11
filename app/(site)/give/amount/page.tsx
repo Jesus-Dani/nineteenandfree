@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Card } from "@/components/Card";
 import { GiveAmountForm } from "@/components/GiveAmountForm";
+import { PhotoFrame } from "@/components/PhotoFrame";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { PAGE_ACCENTS } from "@/lib/theme";
 import { formatNaira } from "@/lib/format";
@@ -63,6 +64,15 @@ export default async function GiveAmountPage({ searchParams }: { searchParams: S
     return (
       <div data-accent={PAGE_ACCENTS.give} className="mx-auto w-full max-w-lg px-6 py-16">
         <ScrollReveal>
+          {item.imageUrl && (
+            <PhotoFrame
+              src={item.imageUrl}
+              alt={item.name}
+              width={480}
+              height={320}
+              className="mb-6 aspect-[3/2]"
+            />
+          )}
           <h1 className="mb-2 text-3xl">{item.name}</h1>
           <p className="mb-8 text-sm text-charcoal/70">
             {formatNaira(item.nextUnitRemaining)} still needed to fund the next unit

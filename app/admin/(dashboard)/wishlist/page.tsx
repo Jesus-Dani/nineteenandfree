@@ -32,7 +32,16 @@ export default async function AdminWishlistPage({ searchParams }: { searchParams
       ) : (
         <div className="flex flex-col gap-4">
           {items.map((item) => (
-            <div key={item.id} className="card-shape border-2 border-charcoal/15 bg-white p-5">
+            <div key={item.id} className="card-shape flex gap-4 border-2 border-charcoal/15 bg-white p-5">
+              {item.imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element -- small admin-list thumbnail, not the public PhotoFrame treatment
+                <img
+                  src={item.imageUrl}
+                  alt=""
+                  className="h-16 w-16 shrink-0 rounded-lg object-cover"
+                />
+              )}
+              <div className="flex-1">
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <span className="text-lg">{item.name}</span>{" "}
@@ -73,6 +82,7 @@ export default async function AdminWishlistPage({ searchParams }: { searchParams
                 {formatNaira(item.unitCost)}/unit · {item.unitsFunded} funded · {formatNaira(item.nextUnitRaised)} /{" "}
                 {formatNaira(item.unitCost)} toward next unit
               </p>
+              </div>
             </div>
           ))}
         </div>

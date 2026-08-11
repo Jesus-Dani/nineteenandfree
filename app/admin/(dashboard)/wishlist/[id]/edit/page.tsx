@@ -21,6 +21,7 @@ export default async function EditWishlistItemPage({ params }: { params: Params 
           name: item.name,
           description: item.description,
           unitCost: item.unitCost,
+          imageUrl: item.imageUrl,
         }}
       />
     </div>
