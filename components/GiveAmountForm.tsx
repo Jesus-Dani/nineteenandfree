@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { initializeGiving, type GivingActionState } from "@/app/give/amount/actions";
+import { initializeGiving, type GivingActionState } from "@/app/(site)/give/amount/actions";
 import { formatNaira } from "@/lib/format";
 
 const GENERAL_SUGGESTED_AMOUNTS = [2000, 5000, 10000, 20000];

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Card } from "@/components/Card";
 import { CtaButton } from "@/components/CtaButton";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { LetterOfLoveForm } from "@/components/LetterOfLoveForm";
+import { BraceletForm } from "@/components/BraceletForm";
 import { PAGE_ACCENTS } from "@/lib/theme";
 import { confirmContributionPayment } from "@/lib/confirm-contribution";
 
@@ -11,6 +13,7 @@ export default async function GiveConfirmationPage({ searchParams }: { searchPar
   const { reference } = await searchParams;
 
   let body: React.ReactNode;
+  let postPayment: React.ReactNode = null;
 
   if (!reference) {
     body = (
@@ -31,6 +34,20 @@ export default async function GiveConfirmationPage({ searchParams }: { searchPar
               Your gift has been received. A receipt has been sent to your email by Paystack.
             </p>
           </Card>
+        );
+        // Design doc Section 11 steps 6b-6c: both prompts are optional and
+        // skippable — nothing after the thank-you above is required.
+        postPayment = (
+          <div className="mt-10 flex flex-col gap-10">
+            <section>
+              <h2 className="mb-4 text-xl">Write a Letter of Love (optional)</h2>
+              <LetterOfLoveForm contributionId={result.contributionId} />
+            </section>
+            <section>
+              <h2 className="mb-4 text-xl">Commemorative bracelet (optional)</h2>
+              <BraceletForm contributionId={result.contributionId} />
+            </section>
+          </div>
         );
         break;
       case "pending":
@@ -84,6 +101,7 @@ export default async function GiveConfirmationPage({ searchParams }: { searchPar
       <ScrollReveal>
         <h1 className="mb-6 text-center text-3xl">Give</h1>
         {body}
+        {postPayment}
         <p className="mt-8 text-center text-sm">
           <Link href="/" className="underline">
             Back to Home

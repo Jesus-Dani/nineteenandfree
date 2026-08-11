@@ -2,8 +2,8 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { verifyTransaction } from "@/lib/paystack";
 
 export type ConfirmResult =
-  | { status: "already-paid" }
-  | { status: "paid" }
+  | { status: "already-paid"; contributionId: string }
+  | { status: "paid"; contributionId: string }
   | { status: "not-found" }
   | { status: "pending" }
   | { status: "failed" }
@@ -27,7 +27,9 @@ export async function confirmContributionPayment(reference: string): Promise<Con
 
   if (error) throw error;
   if (!contribution) return { status: "not-found" };
-  if (contribution.payment_status === "paid") return { status: "already-paid" };
+  if (contribution.payment_status === "paid") {
+    return { status: "already-paid", contributionId: contribution.id };
+  }
 
   const verification = await verifyTransaction(reference);
 
@@ -51,5 +53,5 @@ export async function confirmContributionPayment(reference: string): Promise<Con
 
   if (updateError) throw updateError;
 
-  return { status: "paid" };
+  return { status: "paid", contributionId: contribution.id };
 }
