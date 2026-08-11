@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { NAV_LINKS } from "@/lib/nav-links";
@@ -9,6 +10,9 @@ import { NAV_LINKS } from "@/lib/nav-links";
 export function MobileNav() {
   const [open, setOpen] = useState(false);
 
+  // `open` can only become true via a client-side click, which can never
+  // fire during SSR — so document.body is always safe to use here without
+  // a separate "mounted" guard/effect.
   return (
     <div className="md:hidden">
       <button
@@ -25,7 +29,7 @@ export function MobileNav() {
         </svg>
       </button>
 
-      {open && (
+      {open && createPortal(
         <div className="fixed inset-0 z-50">
           <button
             aria-label="Close menu"
@@ -61,7 +65,8 @@ export function MobileNav() {
               Give Now
             </Link>
           </nav>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
