@@ -27,7 +27,7 @@ export default async function WishlistPage() {
   return (
     <div data-accent={PAGE_ACCENTS.wishlist} className="mx-auto w-full max-w-6xl px-6 py-16">
       <ScrollReveal>
-        <h1 className="mb-4 text-4xl">The Wishlist</h1>
+        <h1 className="mb-4 text-4xl">What They Need</h1>
         <p className="mb-12 max-w-2xl text-charcoal/90">
           These items and needs will help us reach the children with Bibles, books, and educational
           resources. Fund a full unit, or give any amount toward the next one — every gift counts

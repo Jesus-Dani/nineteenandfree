@@ -39,8 +39,8 @@ export default async function TransparencyPage() {
         <Card variant="outline" className="mb-6">
           <h2 className="mb-2 text-xl">Designated giving</h2>
           <p className="text-sm text-charcoal/80">
-            When you give to a specific Wishlist item, that gift is tracked and reported only against
-            that item or category — it is used only for what you chose to support.
+            When you give to a specific item from What They Need, that gift is tracked and reported
+            only against that item or category — it is used only for what you chose to support.
           </p>
         </Card>
       </ScrollReveal>

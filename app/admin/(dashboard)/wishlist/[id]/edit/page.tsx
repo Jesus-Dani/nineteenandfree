@@ -12,7 +12,7 @@ export default async function EditWishlistItemPage({ params }: { params: Params 
 
   return (
     <div className="mx-auto w-full max-w-2xl px-6 py-16">
-      <h1 className="mb-8 text-3xl">Edit Wishlist Item</h1>
+      <h1 className="mb-8 text-3xl">Edit Item</h1>
       <WishlistItemForm
         mode="edit"
         item={{

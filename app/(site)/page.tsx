@@ -82,16 +82,33 @@ export default function HomePage() {
       </section>
 
       {/* About / core message */}
-      <section id="about" className="mx-auto w-full max-w-3xl px-6 pb-20 text-center">
+      <section id="about" className="mx-auto w-full max-w-3xl px-6 pb-20">
         <ScrollReveal>
-          <h2 className="mb-4 text-3xl">About the Outreach</h2>
-          <p className="text-charcoal/90">
-            Our past, mistakes, circumstances, shame, and guilt do not have final authority to define
-            us. In Christ, there is redemption and no condemnation. This is a celebration of
-            God&apos;s grace, not simply a birthday fundraiser — a chance to give to specific books,
-            Bibles, and educational resources, or to the overall outreach fund, while participating
-            through prayer and encouragement.
-          </p>
+          <h2 className="mb-6 text-center text-3xl">About the Outreach</h2>
+          <div className="flex flex-col gap-5 text-charcoal/90">
+            <p>
+              This is my 19th birthday, and for a while I honestly wasn’t excited about it. I
+              couldn’t figure out why until I realized it was because I couldn’t celebrate my life
+              without giving something back first. In Hebrew, 19 carries the weight of God’s
+              perfect judgment, and my name Daniella means “God is my Judge,” so I started thinking
+              about what that actually means. And what it means is this: the judgment God has
+              already passed over us isn’t condemnation, it’s redemption. Because of what Jesus did
+              on the cross, our shame and our guilt and everything in our past don’t get to have
+              the final say over who we are.
+            </p>
+            <p>
+              So for my birthday this year, I’m taking that truth to a free Christian library in
+              Ajegunle that serves children who don’t have much. We’re going to sit and eat
+              together, cut cake, hear about their dreams, and pray with them. I want the children
+              and teenagers to walk away knowing who they are in Christ, not who their
+              circumstances have told them they are. And more than anything, I want to lead them to
+              Him.
+            </p>
+            <p>
+              Every Bible, every book, every gift someone gives here goes toward that day.
+              There’s no condemnation in this. Only redemption. That’s what turning 19 means to me.
+            </p>
+          </div>
         </ScrollReveal>
       </section>
 
