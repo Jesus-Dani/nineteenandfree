@@ -22,7 +22,7 @@ export async function initializeGiving(
   const fund = formData.get("fund") ? String(formData.get("fund")) : null;
 
   if (!email || !EMAIL_PATTERN.test(email)) {
-    return { error: "Please enter a valid email address — Paystack needs this to send your receipt." };
+    return { error: "Please enter a valid email address. Paystack needs this to send your receipt." };
   }
   if (!Number.isFinite(amount) || amount <= 0) {
     return { error: "Please enter a valid amount." };

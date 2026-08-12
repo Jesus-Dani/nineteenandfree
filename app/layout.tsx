@@ -15,9 +15,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Nineteenandfree — A birthday outreach of grace",
+  title: "Nineteenandfree: A birthday outreach of grace",
   description:
-    "A one-time Christian birthday outreach campaign celebrating 19 years of God's grace by giving Bibles, books, and support to children — Romans 8:1.",
+    "A one-time Christian birthday outreach campaign celebrating 19 years of God's grace by giving Bibles, books, and support to children, rooted in Romans 8:1.",
 };
 
 // Deliberately minimal — the public site's scribble background/Header/Footer

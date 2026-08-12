@@ -82,7 +82,7 @@ export function WishlistItemForm({
           <div className="mb-1 flex items-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element -- admin preview thumbnail, not the public-facing PhotoFrame */}
             <img src={item.imageUrl} alt="" className="h-16 w-16 rounded-lg object-cover" />
-            <span className="text-xs text-charcoal/50">Current photo — choose a file to replace it</span>
+            <span className="text-xs text-charcoal/50">Current photo: choose a file to replace it</span>
           </div>
         )}
         <input type="file" name="image" accept="image/*" className={fieldClass} />

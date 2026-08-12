@@ -114,7 +114,7 @@ export async function deleteItem(id: string): Promise<WishlistMutationResult> {
     if (error.code === "23503") {
       return {
         ok: false,
-        error: "This item has contributions tied to it and can't be deleted — archive it instead.",
+        error: "This item has contributions tied to it and can't be deleted. Archive it instead.",
       };
     }
     throw error;

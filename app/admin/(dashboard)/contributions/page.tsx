@@ -36,14 +36,14 @@ export default async function AdminContributionsPage() {
               {contributions.map((c) => (
                 <tr key={c.id} className="border-b border-charcoal/10">
                   <td className="py-2 pr-4 whitespace-nowrap">{new Date(c.createdAt).toLocaleString()}</td>
-                  <td className="py-2 pr-4">{c.contributorContact ?? "—"}</td>
+                  <td className="py-2 pr-4">{c.contributorContact ?? "N/A"}</td>
                   <td className="py-2 pr-4 whitespace-nowrap">
                     {formatNaira(c.amount)} {c.currency}
                   </td>
                   <td className="py-2 pr-4">{c.targetLabel}</td>
                   <td className="py-2 pr-4 capitalize">{c.paymentStatus}</td>
                   <td className="py-2 pr-4">
-                    {c.braceletRequested ? c.braceletContact ?? "Requested" : "—"}
+                    {c.braceletRequested ? c.braceletContact ?? "Requested" : "N/A"}
                   </td>
                 </tr>
               ))}

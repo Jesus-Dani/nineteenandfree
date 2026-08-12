@@ -1,14 +1,14 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export const metadata = {
-  title: "Terms of Use — Nineteenandfree",
+  title: "Terms of Use: Nineteenandfree",
 };
 
 export default function TermsPage() {
   return (
     <div className="mx-auto w-full max-w-2xl px-6 py-16">
       <ScrollReveal>
-        <h1 className="mb-8 text-4xl">Terms of Use — Nineteenandfree</h1>
+        <h1 className="mb-8 text-4xl">Terms of Use: Nineteenandfree</h1>
         <div className="flex flex-col gap-5 text-charcoal/90">
           <p className="italic">
             By using this site or making a contribution, you agree to the following:
@@ -25,18 +25,18 @@ export default function TermsPage() {
           <div>
             <h2 className="mb-1 text-xl">Giving</h2>
             <p>
-              All gifts are final — no refunds, including for changed minds, duplicate payments, or
+              All gifts are final: no refunds, including for changed minds, duplicate payments, or
               mistaken amounts (contact us for genuine payment errors, though resolution isn&apos;t
               guaranteed). Designated gifts are used only for their specified item; General Outreach
               Fund gifts support approved overall costs. A Transparency report shows fund usage.
-              Payments are processed via Paystack — we never see or store card details.
+              Payments are processed via Paystack; we never see or store card details.
             </p>
           </div>
 
           <div>
             <h2 className="mb-1 text-xl">Letters of Love</h2>
             <p>
-              Anything submitted may be displayed publicly and printed in a physical keepsake — this
+              Anything submitted may be displayed publicly and printed in a physical keepsake. This
               is understood at submission, not a separate request. Anonymous submissions omit the
               name in both digital and print. Submissions are reviewed (automatic + manual check)
               before publishing; inappropriate, spam, or unrelated content may be declined. Limit: one
@@ -48,8 +48,8 @@ export default function TermsPage() {
             <h2 className="mb-1 text-xl">Bracelets</h2>
             <p>
               Available only to Redeemers University students, as a thank-you gesture (not a
-              purchase) — not guaranteed and not tied to any gift amount. Distributed in person on
-              campus.
+              purchase). It is not guaranteed and not tied to any gift amount. Distributed in person
+              on campus.
             </p>
           </div>
 

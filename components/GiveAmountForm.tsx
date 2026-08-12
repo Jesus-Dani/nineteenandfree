@@ -82,7 +82,7 @@ export function GiveAmountForm(props: Props) {
 
       {state.error && <p className="text-sm text-red-700">{state.error}</p>}
 
-      <p className="text-xs text-charcoal/60">No minimum amount. No refunds — all gifts are final.</p>
+      <p className="text-xs text-charcoal/60">No minimum amount. No refunds. All gifts are final.</p>
 
       <button
         type="submit"

@@ -14,7 +14,7 @@ export default async function LettersOfLovePage() {
       <ScrollReveal>
         <h1 className="mb-4 text-4xl">Letters of Love</h1>
         <p className="mb-4 text-charcoal/90">
-          Write a message of encouragement for the children — with or without a gift. Your message
+          Write a message of encouragement for the children, with or without a gift. Your message
           may be displayed on this page and printed in a physical keepsake for the children and
           library.
         </p>
@@ -26,7 +26,7 @@ export default async function LettersOfLovePage() {
           <ScrollReveal delay={0.1}>
             <Card variant="outline">
               <p className="text-sm text-charcoal/70">
-                No messages have been approved yet — be the first to write one.
+                No messages have been approved yet. Be the first to write one.
               </p>
             </Card>
           </ScrollReveal>
@@ -36,7 +36,7 @@ export default async function LettersOfLovePage() {
               <Card variant="outline">
                 <p className="whitespace-pre-wrap text-charcoal/90">{message.messageText}</p>
                 <p className="mt-3 text-sm text-charcoal/50">
-                  — {message.isAnonymous || !message.displayName ? "Anonymous" : message.displayName}
+                  By {message.isAnonymous || !message.displayName ? "Anonymous" : message.displayName}
                 </p>
               </Card>
             </ScrollReveal>

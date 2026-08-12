@@ -45,7 +45,7 @@ export default async function AdminWishlistPage({ searchParams }: { searchParams
               <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <span className="text-lg">{item.name}</span>{" "}
-                  <span className="text-sm text-charcoal/50">— {item.category}</span>
+                  <span className="text-sm text-charcoal/50">({item.category})</span>
                   <span
                     className={`ml-3 rounded-full px-3 py-1 text-xs ${
                       item.status === "active" ? "bg-tulip-stems/40" : "bg-charcoal/10"

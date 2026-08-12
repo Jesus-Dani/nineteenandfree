@@ -9,7 +9,7 @@ export function Logo() {
     <Link
       href="/"
       className="flex shrink-0 items-center gap-1.5 text-base leading-none text-charcoal sm:text-xl"
-      aria-label="Nineteenandfree — home"
+      aria-label="Nineteenandfree home"
     >
       <span className="whitespace-nowrap">nineteen and free</span>
       <svg

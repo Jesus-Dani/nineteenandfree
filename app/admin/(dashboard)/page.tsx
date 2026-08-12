@@ -32,7 +32,7 @@ export default async function AdminDashboardPage() {
 
       <div className="mb-6">
         <Link href="/admin/moderation" className="underline">
-          Letters of Love — Moderation Queue
+          Letters of Love: Moderation Queue
         </Link>
       </div>
 

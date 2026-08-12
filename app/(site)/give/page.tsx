@@ -23,7 +23,7 @@ export default async function GivePage() {
           <h1 className="mb-4 text-4xl">Giving has closed</h1>
           <Card variant="outline">
             <p className="text-sm text-charcoal/70">
-              Thank you to everyone who gave — the outreach&apos;s Give flow is no longer accepting
+              Thank you to everyone who gave. The outreach&apos;s Give flow is no longer accepting
               new gifts. Visit Impact and Transparency to see what your generosity made possible.
             </p>
           </Card>
@@ -47,7 +47,7 @@ export default async function GivePage() {
         {allItems.length === 0 ? (
           <Card variant="outline" className="mb-8">
             <p className="text-sm text-charcoal/70">
-              Items are being added to What they need — check back soon, or support the General
+              Items are being added to What they need. Check back soon, or support the General
               Outreach Fund below in the meantime.
             </p>
           </Card>
@@ -61,7 +61,7 @@ export default async function GivePage() {
                 style={{ borderColor: "var(--accent)" }}
               >
                 <span>
-                  {item.name} <span className="text-charcoal/50">— {item.category}</span>
+                  {item.name} <span className="text-charcoal/50">({item.category})</span>
                 </span>
                 <span className="text-sm text-charcoal/60">{formatNaira(item.unitCost)}/unit →</span>
               </Link>

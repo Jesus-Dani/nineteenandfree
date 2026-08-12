@@ -30,7 +30,7 @@ export default async function WishlistPage() {
         <h1 className="mb-4 text-4xl">What they need</h1>
         <p className="mb-12 max-w-2xl text-charcoal/90">
           These items and needs will help us reach the children with Bibles, books, and educational
-          resources. Fund a full unit, or give any amount toward the next one — every gift counts
+          resources. Fund a full unit, or give any amount toward the next one. Every gift counts
           toward real, live progress.
         </p>
       </ScrollReveal>
@@ -45,7 +45,7 @@ export default async function WishlistPage() {
                 {items.length === 0 ? (
                   <Card variant="outline">
                     <p className="text-sm text-charcoal/70">
-                      No items in this category yet — check back soon.
+                      No items in this category yet. Check back soon.
                     </p>
                   </Card>
                 ) : (

@@ -1,14 +1,14 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export const metadata = {
-  title: "Privacy Policy — Nineteenandfree",
+  title: "Privacy Policy: Nineteenandfree",
 };
 
 export default function PrivacyPage() {
   return (
     <div className="mx-auto w-full max-w-2xl px-6 py-16">
       <ScrollReveal>
-        <h1 className="mb-8 text-4xl">Privacy Policy — Nineteenandfree</h1>
+        <h1 className="mb-8 text-4xl">Privacy Policy: Nineteenandfree</h1>
         <div className="flex flex-col gap-5 text-charcoal/90">
           <p className="italic">
             This site is run by Anokwu Chiaza Daniella for the Nineteenandfree birthday outreach. We
@@ -19,10 +19,10 @@ export default function PrivacyPage() {
           <div>
             <h2 className="mb-1 text-xl">What we collect</h2>
             <p>
-              If you give — your email (via Paystack) and payment details, handled directly by
-              Paystack; we never see or store card details ourselves. If you write a Letter of Love —
+              If you give: your email (via Paystack) and payment details, handled directly by
+              Paystack; we never see or store card details ourselves. If you write a Letter of Love:
               your name (optional, can be anonymous) and your message. If you request a bracelet (RUN
-              students only) — name, phone number, WhatsApp number, size, gender.
+              students only): name, phone number, WhatsApp number, size, gender.
             </p>
           </div>
 

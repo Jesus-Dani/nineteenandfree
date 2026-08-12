@@ -15,7 +15,7 @@ export default async function ModerationQueuePage() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16">
-      <h1 className="mb-8 text-3xl">Letters of Love — Moderation</h1>
+      <h1 className="mb-8 text-3xl">Letters of Love: Moderation</h1>
 
       {!pending || pending.length === 0 ? (
         <p className="text-sm text-charcoal/70">Nothing pending review.</p>

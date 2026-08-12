@@ -17,7 +17,7 @@ export default function ImpactPage() {
         <Card variant="fill">
           <p className="text-sm">
             This page is populated after the outreach event with real tallies (Bibles, books, meals,
-            packs, and more, sourced from actual procurement — never estimates), photos, and a short
+            packs, and more, sourced from actual procurement, never estimates), photos, and a short
             narrative of what happened.
           </p>
         </Card>

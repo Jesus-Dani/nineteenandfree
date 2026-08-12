@@ -54,8 +54,8 @@ export default async function GiveConfirmationPage({ searchParams }: { searchPar
         body = (
           <Card variant="outline" className="text-center">
             <p className="text-sm text-charcoal/70">
-              We&apos;re still confirming your payment with Paystack. This can take a moment —
-              refresh this page shortly, or check back later.
+              We&apos;re still confirming your payment with Paystack. This can take a moment.
+              Refresh this page shortly, or check back later.
             </p>
           </Card>
         );

@@ -50,8 +50,8 @@ export default async function AdminLedgerPage() {
                   <td className="py-2 pr-4 whitespace-nowrap">{entry.date}</td>
                   <td className="py-2 pr-4 capitalize">{entry.type}</td>
                   <td className="py-2 pr-4">{formatNaira(entry.amount)}</td>
-                  <td className="py-2 pr-4">{entry.category ?? "—"}</td>
-                  <td className="py-2 pr-4">{entry.description ?? "—"}</td>
+                  <td className="py-2 pr-4">{entry.category ?? "N/A"}</td>
+                  <td className="py-2 pr-4">{entry.description ?? "N/A"}</td>
                 </tr>
               ))}
             </tbody>

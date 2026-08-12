@@ -40,7 +40,7 @@ export default async function TransparencyPage() {
           <h2 className="mb-2 text-xl">Designated giving</h2>
           <p className="text-sm text-charcoal/80">
             When you give to a specific item from What they need, that gift is tracked and reported
-            only against that item or category — it is used only for what you chose to support.
+            only against that item or category. It is used only for what you chose to support.
           </p>
         </Card>
       </ScrollReveal>
@@ -49,7 +49,7 @@ export default async function TransparencyPage() {
         <Card variant="outline">
           <h2 className="mb-2 text-xl">General Outreach Fund</h2>
           <p className="text-sm text-charcoal/80">
-            Gifts to the General Outreach Fund cover approved overall outreach costs — food, drinks,
+            Gifts to the General Outreach Fund cover approved overall outreach costs: food, drinks,
             transportation, activities, printing, materials, logistics, and packaging.
           </p>
         </Card>

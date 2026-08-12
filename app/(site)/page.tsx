@@ -41,7 +41,7 @@ export default function HomePage() {
           <ScrollReveal delay={0.1}>
             <p className="text-lg text-charcoal/90">
               A faith-filled birthday giving initiative celebrating 19 years of God&apos;s grace and
-              extending love to others — Bibles, books, and support for children, given in celebration
+              extending love to others: Bibles, books, and support for children, given in celebration
               of Christ&apos;s redemption.
             </p>
           </ScrollReveal>
