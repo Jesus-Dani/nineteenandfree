@@ -2,6 +2,9 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { isFlaggedContent } from "@/lib/content-filter";
 import { approveMessage, rejectMessage } from "./actions";
 
+// Admin views must always show live data, never a build-time snapshot.
+export const dynamic = "force-dynamic";
+
 export default async function ModerationQueuePage() {
   const supabase = createServerSupabaseClient();
 

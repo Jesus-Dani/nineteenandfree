@@ -2,6 +2,9 @@ import Link from "next/link";
 import { getGiveFlowEnabled } from "@/lib/site-settings";
 import { setGiveFlowEnabledAction } from "./actions";
 
+// Admin views must always show live data, never a build-time snapshot.
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardPage() {
   const giveFlowEnabled = await getGiveFlowEnabled();
 

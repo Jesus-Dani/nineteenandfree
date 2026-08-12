@@ -2,6 +2,9 @@ import { getLedgerSummary, getLedgerEntries } from "@/lib/ledger";
 import { formatNaira } from "@/lib/format";
 import { LedgerEntryForm } from "@/components/LedgerEntryForm";
 
+// Admin views must always show live data, never a build-time snapshot.
+export const dynamic = "force-dynamic";
+
 export default async function AdminLedgerPage() {
   const [summary, entries] = await Promise.all([getLedgerSummary(), getLedgerEntries()]);
 

@@ -5,6 +5,9 @@ import { archiveItemAction, reactivateItemAction, deleteItemAction } from "./act
 
 type SearchParams = Promise<{ error?: string }>;
 
+// Admin views must always show live data, never a build-time snapshot.
+export const dynamic = "force-dynamic";
+
 export default async function AdminWishlistPage({ searchParams }: { searchParams: SearchParams }) {
   const { error } = await searchParams;
   const items = await getAllWishlistItemsForAdmin();

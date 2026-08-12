@@ -2,6 +2,9 @@ import Link from "next/link";
 import { getContributionsForAdmin } from "@/lib/admin-contributions";
 import { formatNaira } from "@/lib/format";
 
+// Admin views must always show live data, never a build-time snapshot.
+export const dynamic = "force-dynamic";
+
 export default async function AdminContributionsPage() {
   const contributions = await getContributionsForAdmin();
 
