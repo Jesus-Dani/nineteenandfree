@@ -12,7 +12,7 @@ export default async function AdminWishlistPage({ searchParams }: { searchParams
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-16">
       <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-3xl">What They Need</h1>
+        <h1 className="text-3xl">What they need</h1>
         <Link
           href="/admin/wishlist/new"
           className="button-shape bg-pink-tulips px-4 py-2 text-sm text-charcoal shadow-[var(--shadow-soft)]"

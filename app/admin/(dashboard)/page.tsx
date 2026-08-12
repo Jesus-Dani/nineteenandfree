@@ -20,7 +20,7 @@ export default async function AdminDashboardPage() {
           href="/admin/wishlist"
           className="card-shape border-2 border-charcoal/15 bg-white p-5 text-center"
         >
-          What They Need
+          What they need
         </Link>
         <Link
           href="/admin/ledger"

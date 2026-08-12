@@ -47,7 +47,7 @@ export default async function GivePage() {
         {allItems.length === 0 ? (
           <Card variant="outline" className="mb-8">
             <p className="text-sm text-charcoal/70">
-              Items are being added to What They Need — check back soon, or support the General
+              Items are being added to What they need — check back soon, or support the General
               Outreach Fund below in the meantime.
             </p>
           </Card>

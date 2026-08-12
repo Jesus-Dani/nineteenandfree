@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-charcoal/80 md:flex-row md:items-center md:justify-between">
         <Logo />
         <nav className="flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/wishlist">What They Need</Link>
+          <Link href="/wishlist">What they need</Link>
           <Link href="/letters-of-love">Letters of Love</Link>
           <Link href="/impact">Impact</Link>
           <Link href="/transparency">Transparency</Link>
