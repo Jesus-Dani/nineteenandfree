@@ -40,8 +40,13 @@ export async function confirmContributionPayment(reference: string): Promise<Con
   }
 
   // Amount safety check — never trust the verified payload blindly against
-  // what we recorded when the transaction was initialized.
-  if (Math.abs(verification.amountNaira - Number(contribution.amount)) > 0.5) {
+  // what we recorded when the transaction was initialized. The donor may
+  // have been charged slightly MORE than the recorded amount if the Paystack
+  // account is configured for the customer to bear the transaction fee —
+  // that's expected and not a red flag. Being charged LESS than recorded is
+  // the actual concerning direction (a stale/reused/tampered reference), so
+  // only that fails the check. A small tolerance absorbs rounding.
+  if (verification.amountNaira < Number(contribution.amount) - 0.5) {
     return { status: "mismatch" };
   }
 

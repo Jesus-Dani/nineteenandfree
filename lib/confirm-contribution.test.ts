@@ -84,12 +84,12 @@ describe("confirmContributionPayment", () => {
     expect(result).toEqual({ status: "paid", contributionId: "c2" });
   });
 
-  it("flags a mismatch instead of trusting a verified amount that disagrees with what was recorded", async () => {
+  it("flags a mismatch when the donor was charged LESS than what was recorded", async () => {
     state.contributionRow = { id: "c3", amount: 5000, payment_status: "pending" };
     mockVerifyTransaction.mockResolvedValue({
       status: "success",
       reference: "ref-mismatch",
-      amountNaira: 1, // deliberately different from the recorded 5000
+      amountNaira: 1, // deliberately far below the recorded 5000
       currency: "NGN",
       email: "donor@example.com",
     });
@@ -97,6 +97,25 @@ describe("confirmContributionPayment", () => {
     const result = await confirmContributionPayment("ref-mismatch");
 
     expect(result).toEqual({ status: "mismatch" });
+  });
+
+  it("accepts a verified amount that's HIGHER than recorded (Paystack fee passed on to the customer) instead of flagging it as a mismatch", async () => {
+    // Regression test: a real bug reported 2026-08-13 — accounts configured
+    // so the customer bears the Paystack transaction fee cause the amount
+    // actually charged to exceed what we recorded when initializing the
+    // transaction. That's expected, not fraud, and must not block real donors.
+    state.contributionRow = { id: "c6", amount: 500, payment_status: "pending" };
+    mockVerifyTransaction.mockResolvedValue({
+      status: "success",
+      reference: "ref-fee-inclusive",
+      amountNaira: 507.5, // 500 + a plausible Paystack fee
+      currency: "NGN",
+      email: "donor@example.com",
+    });
+
+    const result = await confirmContributionPayment("ref-fee-inclusive");
+
+    expect(result).toEqual({ status: "paid", contributionId: "c6" });
   });
 
   it("returns failed when Paystack reports the charge failed or was abandoned", async () => {
