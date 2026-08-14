@@ -1,5 +1,7 @@
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
+export type DeleteContributionResult = { ok: true } | { ok: false; error: string };
+
 export type AdminContributionRow = {
   id: string;
   contributorContact: string | null;
@@ -55,4 +57,29 @@ export async function getContributionsForAdmin(): Promise<AdminContributionRow[]
       createdAt: row.created_at,
     };
   });
+}
+
+/**
+ * Deletes a contribution (e.g. a test transaction). Handles the same
+ * foreign-key relationships as the manual cleanup SQL used earlier this
+ * project: bracelet_requests.contribution_id is required, so any linked
+ * request is removed; messages.contribution_id is optional, so a linked
+ * Letter of Love is unlinked (kept) rather than deleted.
+ */
+export async function deleteContribution(id: string): Promise<DeleteContributionResult> {
+  const supabase = createServerSupabaseClient();
+
+  const { error: unlinkError } = await supabase
+    .from("messages")
+    .update({ contribution_id: null })
+    .eq("contribution_id", id);
+  if (unlinkError) return { ok: false, error: "Failed to unlink related Letters of Love messages." };
+
+  const { error: braceletError } = await supabase.from("bracelet_requests").delete().eq("contribution_id", id);
+  if (braceletError) return { ok: false, error: "Failed to remove the related bracelet request." };
+
+  const { error } = await supabase.from("contributions").delete().eq("id", id);
+  if (error) return { ok: false, error: "Failed to delete the contribution." };
+
+  return { ok: true };
 }

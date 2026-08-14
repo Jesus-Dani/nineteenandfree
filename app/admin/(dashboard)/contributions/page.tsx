@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { getContributionsForAdmin } from "@/lib/admin-contributions";
 import { formatNaira } from "@/lib/format";
+import { ConfirmSubmitButton } from "@/components/ConfirmSubmitButton";
+import { deleteContributionAction } from "./actions";
 
 // Admin views must always show live data, never a build-time snapshot.
 export const dynamic = "force-dynamic";
 
-export default async function AdminContributionsPage() {
+type SearchParams = Promise<{ error?: string }>;
+
+export default async function AdminContributionsPage({ searchParams }: { searchParams: SearchParams }) {
+  const { error } = await searchParams;
   const contributions = await getContributionsForAdmin();
 
   return (
@@ -20,11 +25,17 @@ export default async function AdminContributionsPage() {
         </Link>
       </div>
 
+      {error && (
+        <div className="card-shape mb-6 border-2 border-red-300 bg-red-50 p-4 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
       {contributions.length === 0 ? (
         <p className="text-sm text-charcoal/70">No contributions yet.</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[800px] border-collapse text-sm">
+          <table className="w-full min-w-[900px] border-collapse text-sm">
             <thead>
               <tr className="border-b border-charcoal/20 text-left text-charcoal/60">
                 <th className="py-2 pr-4">Date</th>
@@ -33,6 +44,7 @@ export default async function AdminContributionsPage() {
                 <th className="py-2 pr-4">Target</th>
                 <th className="py-2 pr-4">Status</th>
                 <th className="py-2 pr-4">Bracelet</th>
+                <th className="py-2 pr-4">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -47,6 +59,16 @@ export default async function AdminContributionsPage() {
                   <td className="py-2 pr-4 capitalize">{c.paymentStatus}</td>
                   <td className="py-2 pr-4">
                     {c.braceletRequested ? c.braceletContact ?? "Requested" : "N/A"}
+                  </td>
+                  <td className="py-2 pr-4">
+                    <form action={deleteContributionAction.bind(null, c.id)}>
+                      <ConfirmSubmitButton
+                        confirmMessage={`Delete this ${formatNaira(c.amount)} contribution? This can't be undone.`}
+                        className="text-red-700 underline"
+                      >
+                        Delete
+                      </ConfirmSubmitButton>
+                    </form>
                   </td>
                 </tr>
               ))}
